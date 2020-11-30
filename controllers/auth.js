@@ -57,7 +57,7 @@ const googleSingIn = async ( req , res = response)=>{
     try {
 
          const { name, email , picture } = await googleVerify(googleToken)
-
+        console.log(googleToken);
          const usuarioDB = await Usuario.findOne({email})
          let usuario;
 
@@ -106,9 +106,12 @@ const renewToken = async (req , res = response) =>{
 
     const token = await generarJWT( id );
 
+    const usuario = await Usuario.findById(id)
+
     res.json({
         ok:true,
-        token
+        token,
+        usuario
     })
 
 }

@@ -16,7 +16,7 @@ router.post('/',
     login
 )
 
-router.post('/:google',
+router.post('/google',
     [
         check('token','El token de google es obligatorio').not().isEmpty(),
         validarCampos
